@@ -1,0 +1,108 @@
+/* Thème clair */
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+/* Style pour la navbar */
+/*.navbar {
+  background-color: #000000;
+  overflow: hidden;
+}
+*/
+/*.nav-content {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar a {
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: rgb(17, 174, 14);
+}
+*/
+/* Style pour le conteneur de connexion */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+}
+
+/* Style pour l'image */
+.login-image {
+  margin-right: 75px;
+}
+
+/* Style pour le formulaire de connexion */
+.login-form {
+  text-align: left;
+  width: 500px;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.forgot-password {
+  font-size: 14px;
+  color: #666;
+  text-decoration: none;
+  float: right;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+/* Style pour la section de présentation de l'entreprise */
+.company-info {
+  margin: 50px auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+.company-info h2 {
+  margin-bottom: 20px;
+}
+
+.company-info p {
+  line-height: 1.6;
+}
+
+.erreur{
+  justify-content: center;/*Axe X*/
+  align-items: center;/*Axe Y*/
+  font-size: 16px;
+  width: 100%;
+  height: 73vh;
+  display: flex;
+}
