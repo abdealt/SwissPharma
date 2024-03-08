@@ -24,4 +24,5 @@
             <?php } ?>
         </tbody>
     </table>
+    <button type="button" class="btn btn-primary" href="index.php?page=ajouterfrais">Ajouter un frais</button>
 </div>
