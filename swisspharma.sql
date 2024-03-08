@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 07 mars 2024 à 22:07
+-- Généré le : ven. 08 mars 2024 à 19:28
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.0.30
 
@@ -38,7 +38,7 @@ CREATE TABLE `employer` (
   `date_naissance` date DEFAULT NULL,
   `date_embauche` date DEFAULT NULL,
   `username` varchar(30) NOT NULL,
-  `pass` varchar(30) NOT NULL,
+  `pass` varchar(255) NOT NULL,
   `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -47,7 +47,7 @@ CREATE TABLE `employer` (
 --
 
 INSERT INTO `employer` (`matricule`, `nom`, `prenom`, `adresse`, `cp`, `ville`, `telephone`, `date_naissance`, `date_embauche`, `username`, `pass`, `role_id`) VALUES
-(1, 'ALLAOUAT', 'Abdenour', '35 Rue Raymond Laubier', '91410', 'Dourdan', '0123456789', '2000-01-01', '2024-03-06', 'aallaouat', '123', 3);
+(1, 'ALLAOUAT', 'Abdenour', '35 Rue Raymond Laubier', '91410', 'Dourdan', '0123456789', '2000-01-01', '2024-03-06', 'aallaouat', '$2y$10$CNjkTy6yaq98Z7BAUWd1QOpsrmjRfJDRIsgiMBemPaau1D94cLyVy', 3);
 
 -- --------------------------------------------------------
 
@@ -57,8 +57,19 @@ INSERT INTO `employer` (`matricule`, `nom`, `prenom`, `adresse`, `cp`, `ville`, 
 
 CREATE TABLE `etat` (
   `id` int(11) NOT NULL,
-  `lib` varchar(20) NOT NULL
+  `libelle` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `etat`
+--
+
+INSERT INTO `etat` (`id`, `libelle`) VALUES
+(1, 'Crée'),
+(2, 'Cloturée'),
+(3, 'Validée'),
+(4, 'Mise en paiement'),
+(5, 'Remboursée');
 
 -- --------------------------------------------------------
 
@@ -67,20 +78,21 @@ CREATE TABLE `etat` (
 --
 
 CREATE TABLE `fichefrais` (
+  `ID` int(11) NOT NULL,
   `moisAnnee` date DEFAULT NULL,
   `nbJustificatifs` int(11) NOT NULL,
   `montantValide` varchar(11) NOT NULL,
   `dateModif` date DEFAULT NULL,
   `etat_id` int(11) NOT NULL,
-  `lignefraishorsforfait_id` int(11) NOT NULL
+  `employer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `fichefrais`
 --
 
-INSERT INTO `fichefrais` (`moisAnnee`, `nbJustificatifs`, `montantValide`, `dateModif`, `etat_id`, `lignefraishorsforfait_id`) VALUES
-('2022-01-01', 2, '200', '2021-12-29', 0, 0);
+INSERT INTO `fichefrais` (`ID`, `moisAnnee`, `nbJustificatifs`, `montantValide`, `dateModif`, `etat_id`, `employer_id`) VALUES
+(1, '2022-01-01', 2, '200', '2021-12-29', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -101,7 +113,9 @@ CREATE TABLE `fraisforfait` (
 --
 
 CREATE TABLE `lignefraisforfait` (
-  `quantite` int(11) NOT NULL
+  `quantite` int(11) NOT NULL,
+  `fichefrais__id` int(11) NOT NULL,
+  `fraisforfait_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -114,8 +128,17 @@ CREATE TABLE `lignefraishorsforfait` (
   `id` int(11) NOT NULL,
   `dateHF` date DEFAULT NULL,
   `montant` int(11) NOT NULL,
-  `libelle` varchar(30) NOT NULL
+  `libelle` varchar(30) NOT NULL,
+  `fichefrais_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `lignefraishorsforfait`
+--
+
+INSERT INTO `lignefraishorsforfait` (`id`, `dateHF`, `montant`, `libelle`, `fichefrais_id`) VALUES
+(1, '2024-01-01', 2200, 'Matériel', 1),
+(2, '2024-02-01', 1000, 'Matériel médical', 1);
 
 -- --------------------------------------------------------
 
@@ -133,9 +156,8 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`id`, `libelle`) VALUES
-(1, 'Pharmacien'),
-(2, 'Destributeur'),
-(3, 'Administrateur');
+(1, 'Admin'),
+(2, 'Utilisateur');
 
 --
 -- Index pour les tables déchargées
@@ -152,6 +174,12 @@ ALTER TABLE `employer`
 --
 ALTER TABLE `etat`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `fichefrais`
+--
+ALTER TABLE `fichefrais`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Index pour la table `fraisforfait`
@@ -185,7 +213,13 @@ ALTER TABLE `employer`
 -- AUTO_INCREMENT pour la table `etat`
 --
 ALTER TABLE `etat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT pour la table `fichefrais`
+--
+ALTER TABLE `fichefrais`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `fraisforfait`
@@ -197,7 +231,7 @@ ALTER TABLE `fraisforfait`
 -- AUTO_INCREMENT pour la table `lignefraishorsforfait`
 --
 ALTER TABLE `lignefraishorsforfait`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `role`
