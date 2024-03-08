@@ -15,7 +15,7 @@ switch($page){
 		require "controllers/c_connexion.php";
 		break;
 	}
-	case 'acceuil':{
+	case 'frais':{
 		require "controllers/c_frais.php";
 		break;
 	}
@@ -31,5 +31,4 @@ switch($page){
 }
 
 require "views/v_footer.php";
-
 ?>

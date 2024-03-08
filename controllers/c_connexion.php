@@ -11,7 +11,7 @@ if(isset($_POST['username'])&&isset($_POST['password'])){
 
     $user = getUserBy($username);
     if($user){
-        if($user['pass']==$_POST['password']){
+        if (password_verify($password, $user['pass'])){ // Utilise BCRYPT
             session_start();
             $_SESSION['username'] = $user['username'];
             $_SESSION['nom'] = $user['nom'];
@@ -19,7 +19,7 @@ if(isset($_POST['username'])&&isset($_POST['password'])){
             $_SESSION['date_embauche'] = $user['date_embauche'];
             $_SESSION['role'] = $user['role'];
             $_SESSION['matricule'] = $user['matricule'];
-            header("Location: "."index.php?page=acceuil");
+            header("Location: "."index.php?page=frais");
         }else{
             $erreur = true;
             $erreurMessage = 'Utilisateur ou le mot de passe est inccorect.';

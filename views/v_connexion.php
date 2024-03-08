@@ -13,7 +13,6 @@
   <div class="login-image">
     <img src=".\assets\img\LogoSwissPharma.png" alt="Image">
   </div>
-  
   <div class="login-form">
     <h2>Connexion</h2>
     <form action="index.php?page=connexion" method="POST">
