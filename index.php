@@ -16,7 +16,7 @@ switch($page){
 		break;
 	}
 	case 'acceuil':{
-		require "controllers/c_acceuil.php";
+		require "controllers/c_frais.php";
 		break;
 	}
 	case 'deconnecter':{
