@@ -15,10 +15,17 @@ switch($page){
 		require "controllers/c_connexion.php";
 		break;
 	}
+
 	case 'frais':{
 		require "controllers/c_frais.php";
 		break;
 	}
+
+	case 'ajouterfrais':{
+		require "controllers/c_ajouterfrais.php";
+		break;
+	}
+	
 	case 'deconnecter':{
 		require "controllers/c_deconnecter.php";
 		break;

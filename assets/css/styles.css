@@ -106,3 +106,8 @@ body {
   height: 73vh;
   display: flex;
 }
+
+.link{
+  text-decoration: none;
+  color: #fff;
+}

@@ -9,7 +9,4 @@ function getUserBy($username){
     $req->execute();
     return $req->fetch($conn::FETCH_ASSOC);
 }
-
-
-
 ?>

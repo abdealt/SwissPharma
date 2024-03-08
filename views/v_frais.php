@@ -5,6 +5,7 @@
     <table class="table">
         <thead>
         <tr>
+            <th scope="col">ID</th>
             <th scope="col">Etat</th>
             <th scope="col">Jour de création</th>
             <th scope="col">Nombre de justificatifs</th>
@@ -15,7 +16,8 @@
         <tbody>
             <?php foreach($mesFrais as $m){ ?>
                 <tr>
-                    <th scope="row"><?php echo $m['lib'] ?></th>
+                    <th scope="row"><?php echo $m['ID'] ?></th>
+                    <td><?php echo $m['libelle'] ?></td>
                     <td><?php echo convertDate($m['moisAnnee']) ?></td>
                     <td><?php echo $m['nbJustificatifs'] ?></td>
                     <td><?php echo $m['montantValide'] ?>€</td>
@@ -24,5 +26,5 @@
             <?php } ?>
         </tbody>
     </table>
-    <button type="button" class="btn btn-primary" href="index.php?page=ajouterfrais">Ajouter un frais</button>
+    <button type="button" class="btn btn-primary"><a class="link" href="index.php?page=ajouterfrais">Ajouter un frais</a></button>
 </div>
