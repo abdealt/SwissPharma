@@ -25,6 +25,11 @@ switch($page){
 		require "controllers/c_ajouterfrais.php";
 		break;
 	}
+
+	case 'horsforfait':{
+		require "controllers/c_consulterhosforfait.php";
+		break;
+	}
 	
 	case 'deconnecter':{
 		require "controllers/c_deconnecter.php";
