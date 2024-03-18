@@ -16,6 +16,11 @@ switch($page){
 		break;
 	}
 
+	case 'fichefrais':{
+		require "controllers/c_fichefrais.php";
+		break;
+	}
+
 	case 'frais':{
 		require "controllers/c_frais.php";
 		break;
@@ -23,11 +28,6 @@ switch($page){
 
 	case 'ajouterfrais':{
 		require "controllers/c_ajouterfrais.php";
-		break;
-	}
-
-	case 'horsforfait':{
-		require "controllers/c_consulterhosforfait.php";
 		break;
 	}
 	

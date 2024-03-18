@@ -17,9 +17,9 @@ if(isset($_POST['username'])&&isset($_POST['password'])){
             $_SESSION['nom'] = $user['nom'];
             $_SESSION['prenom'] = $user['prenom'];
             $_SESSION['date_embauche'] = $user['date_embauche'];
-            $_SESSION['role'] = $user['role'];
+            $_SESSION['role'] = $user['libelle'];
             $_SESSION['matricule'] = $user['matricule'];
-            header("Location: "."index.php?page=frais");
+            header("Location: "."index.php?page=fichefrais");
         }else{
             $erreur = true;
             $erreurMessage = 'Utilisateur ou le mot de passe est inccorect.';

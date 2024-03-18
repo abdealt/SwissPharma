@@ -16,11 +16,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="index.php?page=frais">Consulter les fiches</a>
-          <a class="nav-link" href="#">NOM A AJOUTER</a>
+          <a class="nav-link active" aria-current="page" href="index.php?page=fichefrais">Consulter les fiches</a>
+          
           <a class="nav-link" href="configuration">Configurer le compte</a>
           <a class="nav-link" href="index.php?page=deconnecter">Deconnecter</a>
         </div>
+      </div>
+      <div class="d-flex">
+        <a class="navbar-brand"><?php echo $_SESSION['nom'].' '.$_SESSION['prenom'] ?></a>
       </div>
     </div>
   </nav>

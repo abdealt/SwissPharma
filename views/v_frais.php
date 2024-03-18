@@ -1,30 +1,47 @@
 <?php require 'helpers/help.php'; ?>
 <div class="container">
-    <h1>Bienvenue <?php echo $_SESSION['nom']." " .$_SESSION['prenom']?></h1>
     <p>Voici, ci dessous les frais vous concernant:</p>
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Etat</th>
-            <th scope="col">Jour de création</th>
-            <th scope="col">Nombre de justificatifs</th>
-            <th scope="col">Montant valide</th>
-            <th scope="col">Date de modification</th>
+            <th scope="col">Libelle</th>
+            <th scope="col">Montant</th>
+            <th scope="col">Quantite</th>
         </tr>
         </thead>
         <tbody>
-            <?php foreach($mesFrais as $m){ ?>
+            <?php foreach($fraisforfait as $m){ ?>
                 <tr>
-                    <th scope="row"><?php echo $m['ID'] ?></th>
                     <td><?php echo $m['libelle'] ?></td>
-                    <td><?php echo convertDate($m['moisAnnee']) ?></td>
-                    <td><?php echo $m['nbJustificatifs'] ?></td>
-                    <td><?php echo $m['montantValide'] ?>€</td>
-                    <td><?php echo convertDate($m['dateModif']) ?></td>
+                    <td><?php echo $m['montant'] ?>€</td>
+                    <td><?php echo $m['quantite'] ?></td>
+                    
                 </tr>
             <?php } ?>
         </tbody>
     </table>
-    <button type="button" class="btn btn-primary"><a class="link" href="index.php?page=ajouterfrais">Ajouter un frais</a></button>
+       
+
+    <p>Voici, ci dessous les frais hors-forfait vous concernant:</p>
+    
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Montant</th>
+            <th scope="col">Libelle</th>
+        </tr>
+        </thead>
+        <tbody>
+            <?php foreach($fraisHForfait as $m){ ?>
+                <tr>
+                    <th scope="row"><?php echo convertDate($m['dateHF']) ?></th>
+                    <td><?php echo $m['montant'] ?>€</td>
+                    <td><?php echo $m['libelle'] ?></td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
 </div>
+
+
