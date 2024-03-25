@@ -49,4 +49,15 @@ function getAllFraisForfait($idfichefrais){
     return $req->fetchAll($conn::FETCH_ASSOC);
 }
 
+
+function createFrais($repasLib,$repasMontant,$repasQuantite,$nuitLib,$nuitMontant,$kilomLib,$kilomMontant,$kilomQuantite,$fraisHF,$total){
+    $sql = 'INSERT INTO fichefrais (moisAnnee, nbJustificatifs, montantValide, dateModif, etat_id, employer_id)VALUES(CONCAT(MONTH(NOW()),"-",YEAR(NOW())), 0, 0)';
+    $conn = connDB();
+    $req = $conn->prepare($sql);
+    $req->bindParam(':dateFrais', $dateFrais);
+    $req->bindParam(':coutFrais', $coutFrais);
+    $req->bindParam(':nomFrais', $nomFrais);
+    $req->bindParam(':idFrais', $idFrais);
+    $req->execute();
+}
 ?>
